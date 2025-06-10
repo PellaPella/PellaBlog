@@ -10,7 +10,7 @@ const Author = ({ author }) => (
       height={100}
       width={100}
       className="rounded-full"
-      src={author.photo.url}
+      src={author.photo?.url}
     />
   </div>
   <div className="ml-6"> {/* Added margin-left to move the text to the right */}

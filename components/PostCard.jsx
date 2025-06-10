@@ -13,7 +13,7 @@ const PostCard = ( {post}) => {
             <div className="relative overflow-hidden shadow-md pb-80 mb-6"> 
               
               <img
-                src={post.featuredImage.url}
+                src={post.featuredImage?.url}
                 alt={post.title}
                 className="object-top absolute h-80 w-full object-cover shadow-lg rounded-t-lg lg:rounded-lg"
               />
@@ -33,7 +33,7 @@ const PostCard = ( {post}) => {
                   height="30px"
                   width="30px"
                   className="align-middle rounded-full"
-                  src={post.author.photo.url}
+                  src={post.author.photo?.url}
                 />
 
                 <p className="inline aling-middle text-gray-700 ml-2 text-lg"> 
