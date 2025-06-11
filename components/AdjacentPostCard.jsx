@@ -75,4 +75,5 @@ const AdjacentPostCard = ({ post, position }) => {
   );
 };
 
-export default AdjacentPostCard;
+export default AdjacentPostCard; 
+
