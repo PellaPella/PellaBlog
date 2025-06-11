@@ -60,6 +60,8 @@ const FeaturedPosts = () => {
       </Carousel>
     </div>
   );
+  
 };
+
 
 export default FeaturedPosts;
