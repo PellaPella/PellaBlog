@@ -104,38 +104,50 @@ const PostDetails = ({ post }) => {
     }
 
     switch (type) {
-      case 'heading-three':
-        return (
-          <h3 key={index} className="text-xl font-semibold mb-4">
-            {modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}
-          </h3>
-        );
-      case 'paragraph':
-        return (
-          <p key={index} className="mb-8">
-            {modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}
-          </p>
-        );
-      case 'heading-four':
-        return (
-          <h4 key={index} className="text-md font-semibold mb-4">
-            {modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}
-          </h4>
-        );
-      case 'image':
-        return (
-          <img
-            key={index}
-            alt={obj.title || 'image'}
-            height={obj.height}
-            width={obj.width}
-            src={obj.src || '/default-image.png'}
-          />
-        );
-      default:
-        return modifiedText;
-    }
-  };
+    case 'heading-one':
+      return (
+        <h1 key={index} className="text-4xl font-bold mb-6">
+          {modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}
+        </h1>
+      );
+    case 'heading-two':
+      return (
+        <h2 key={index} className="text-3xl font-semibold mb-5">
+          {modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}
+        </h2>
+      );
+    case 'heading-three':
+      return (
+        <h3 key={index} className="text-2xl font-semibold mb-4">
+          {modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}
+        </h3>
+      );
+    case 'heading-four':
+      return (
+        <h4 key={index} className="text-xl font-semibold mb-3">
+          {modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}
+        </h4>
+      );
+    case 'paragraph':
+      return (
+        <p key={index} className="text-base mb-6 leading-relaxed">
+          {modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}
+        </p>
+      );
+    case 'image':
+      return (
+        <img
+          key={index}
+          alt={obj.title || 'image'}
+          height={obj.height}
+          width={obj.width}
+          src={obj.src || '/default-image.png'}
+        />
+      );
+    default:
+      return modifiedText;
+  }
+};
 
   return (
     <div className="bg-white shadow-lg rounded-lg lg:p-8 pb-12 mb-8">
