@@ -146,11 +146,15 @@ const PostDetails = ({ post }) => {
   );
       
     case 'code_block':
-      return (
-        <pre key={index} className="bg-gray-100 p-4 rounded mb-6 overflow-x-auto text-sm leading-relaxed">
-          <code>{obj.children?.map((line, i) => line.text).join('\n')}</code>
-        </pre>
-      );
+  return (
+    <pre key={index} className="bg-gray-100 text-sm font-mono rounded p-4 my-4 overflow-x-auto">
+      <code>
+        {obj.children?.map((line, i) => (
+          <div key={i}>{line.text}</div>
+        ))}
+      </code>
+    </pre>
+  );
     case 'image':
       return (
         <img
