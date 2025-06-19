@@ -86,24 +86,25 @@ import React from 'react';
 import moment from 'moment';
 
 const PostDetails = ({ post }) => {
-  const getContentFragment = (index, text, obj, type) => {
-    let modifiedText = text;
+ const getContentFragment = (index, text, obj, type) => {
+  let modifiedText = text;
 
-    if (obj) {
-      if (obj.bold) {
-        modifiedText = (<b key={index}>{text}</b>);
-      }
-
-      if (obj.italic) {
-        modifiedText = (<em key={index}>{text}</em>);
-      }
-
-      if (obj.underline) {
-        modifiedText = (<u key={index}>{text}</u>);
-      }
+  if (obj) {
+    if (obj.bold) {
+      modifiedText = (<b key={index}>{text}</b>);
     }
+    if (obj.italic) {
+      modifiedText = (<em key={index}>{text}</em>);
+    }
+    if (obj.underline) {
+      modifiedText = (<u key={index}>{text}</u>);
+    }
+    if (obj.code) {
+      modifiedText = (<code key={index} className="bg-gray-200 px-1 rounded text-sm">{text}</code>);
+    }
+  }
 
-    switch (type) {
+  switch (type) {
     case 'heading-one':
       return (
         <h1 key={index} className="text-4xl font-bold mb-6">
@@ -133,6 +134,12 @@ const PostDetails = ({ post }) => {
         <p key={index} className="text-base mb-6 leading-relaxed">
           {modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}
         </p>
+      );
+    case 'code_block':
+      return (
+        <pre key={index} className="bg-gray-100 p-4 rounded mb-6 overflow-x-auto text-sm leading-relaxed">
+          <code>{obj.children?.map((line, i) => line.text).join('\n')}</code>
+        </pre>
       );
     case 'image':
       return (
