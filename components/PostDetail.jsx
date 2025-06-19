@@ -129,12 +129,22 @@ const PostDetails = ({ post }) => {
           {modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}
         </h4>
       );
-    case 'paragraph':
-      return (
-        <p key={index} className="text-base mb-6 leading-relaxed">
-          {modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}
-        </p>
-      );
+   case 'paragraph':
+  const isCodeBlock = obj?.children?.some(child => child.code);
+  return isCodeBlock ? (
+    <pre key={index} className="bg-gray-100 p-4 rounded mb-6 overflow-x-auto text-sm">
+      <code>
+        {obj.children.map((child, i) => (
+          <div key={i}>{child.text}</div>
+        ))}
+      </code>
+    </pre>
+  ) : (
+    <p key={index} className="text-base mb-6 leading-relaxed">
+      {modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}
+    </p>
+  );
+      
     case 'code_block':
       return (
         <pre key={index} className="bg-gray-100 p-4 rounded mb-6 overflow-x-auto text-sm leading-relaxed">
