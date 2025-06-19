@@ -223,7 +223,7 @@ const PostDetails = ({ post }) => {
 
         {post.content?.raw?.children?.map((typeObj, index) => {
           const children = typeObj.children.map((item, itemIndex) =>
-            getContentFragment(itemIndex, item.text, item)
+            getContentFragment(itemIndex, item.text, item, item.type)
           );
           return getContentFragment(index, children, typeObj, typeObj.type);
         })}
