@@ -130,7 +130,7 @@ const PostDetails = ({ post }) => {
         </h4>
       );
    case 'paragraph':
-  const isCodeBlock = obj?.children?.some(child => child.code);
+  const isCodeBlock = obj?.children?.every(child => child.code);
   return isCodeBlock ? (
     <pre key={index} className="bg-gray-100 p-4 rounded mb-6 overflow-x-auto text-sm">
       <code>
