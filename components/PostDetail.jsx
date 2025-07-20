@@ -85,27 +85,33 @@ export default PostDetails; */
 import React from 'react';
 import moment from 'moment';
 
-const isValidUrl = (string) => {
-    try {
-      new URL(string);
-      return true;
-    } catch (_) {
-      return false;
-    }
-  };
 
 const PostDetails = ({ post }) => {
 
  const getContentFragment = (index, text, obj, type) => {
   let modifiedText = text;
 
-  if (typeof text === 'string' && isValidUrl(text)) {
-    modifiedText = (
-      <a key={index} href={text} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline break-words">
-        {text}
-      </a>
-    );
-  }
+  if (typeof text === 'string') {
+  const urlRegex = /(https?:\/\/[^\s]+)/g;
+  const parts = text.split(urlRegex);
+
+  modifiedText = parts.map((part, i) => {
+    if (urlRegex.test(part)) {
+      return (
+        <a
+          key={`${index}-${i}`}
+          href={part}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 underline break-words"
+        >
+          {part}
+        </a>
+      );
+    }
+    return part;
+  });
+}
 
   if (obj) {
     if (obj.bold) {
