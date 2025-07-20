@@ -89,6 +89,14 @@ const PostDetails = ({ post }) => {
  const getContentFragment = (index, text, obj, type) => {
   let modifiedText = text;
 
+  if (typeof text === 'string' && isValidUrl(text)) {
+    modifiedText = (
+      <a key={index} href={text} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline break-words">
+        {text}
+      </a>
+    );
+  }
+
   if (obj) {
     if (obj.bold) {
       modifiedText = (<b key={index}>{text}</b>);
