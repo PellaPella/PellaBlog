@@ -85,10 +85,7 @@ export default PostDetails; */
 import React from 'react';
 import moment from 'moment';
 
-const PostDetails = ({ post }) => {
-
-
-  const isValidUrl = (string) => {
+const isValidUrl = (string) => {
     try {
       new URL(string);
       return true;
@@ -96,6 +93,9 @@ const PostDetails = ({ post }) => {
       return false;
     }
   };
+
+const PostDetails = ({ post }) => {
+
  const getContentFragment = (index, text, obj, type) => {
   let modifiedText = text;
 
